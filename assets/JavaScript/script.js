@@ -13,7 +13,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generate.addEventListener("click", writePassword);
 
 function generatePassword() {
   var passwordLength = prompt("Enter a value between 8 and 128 for the password length: ");
@@ -41,5 +41,37 @@ function generatePassword() {
   var password = "";
   var add_from_string = "";
 
-  
+  if (lower) {
+    characters_string += "abcdefghijklmnopqrstuvwxyz";
+    add_from_string = "abcdefghijklmnopqrstuvwxyz";
+    password += add_from_string.charAt(Math.random() *26);
+    passwordLength -= 1;
+    length += 26;
+  }
+  if (upper) {
+    characters_string += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    add_from_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    password += add_from_string.charAt(Math.random() * 26);
+    passwordLength -= 1;
+    length += 26;
+  }
+  if (numeric) {
+    characters_string += "1234567890";
+    add_from_string = "1234567890";
+    password += add_from_string.charAt(Math.random() * 10);
+    passwordLength -= 1;
+    length += 10;
+  }
+  if (special) {
+    characters_string += "!@#$%^&*()";
+    add_from_string = "!@#$%^&*()";
+    password += add_from_string.charAt(Math.random() * 10);
+    passwordLength -= 1;
+    length += 10;
+  }
+
+  for (i = 0; i <passwordLength; i++) {
+    password += characters_string.charAt(Math.random() * length);
+  }
+  return password;
 }
